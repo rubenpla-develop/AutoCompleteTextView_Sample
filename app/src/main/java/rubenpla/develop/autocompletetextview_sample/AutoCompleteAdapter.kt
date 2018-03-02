@@ -52,7 +52,7 @@ class AutoCompleteAdapter(context : Context) : BaseAdapter(), Filterable {
 
     override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
+            override fun performFiltering(constraint: CharSequence): FilterResults {
                 val filterResults = FilterResults()
 
                 if (!constraint.isNullOrBlank()) {
@@ -65,9 +65,11 @@ class AutoCompleteAdapter(context : Context) : BaseAdapter(), Filterable {
                 return filterResults
             }
 
-            override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 if (results != null && results.count > 0) {
+                    @Suppress("UNCHECKED_CAST")
                     resultsMatchingList = results.values as MutableList<String>
+
                     notifyDataSetChanged()
                 } else {
                     notifyDataSetInvalidated()

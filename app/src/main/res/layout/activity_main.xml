@@ -6,28 +6,93 @@
     android:layout_height="match_parent"
     tools:context="rubenpla.develop.autocompletetextview_sample.MainActivity">
 
-    <AutoCompleteTextView
+    <TextView
+        android:id="@+id/autocomplete_textview_ext_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="AutoCompleteTextViewExt :"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@id/autocomplete_original"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="AutoCompleteTextViewExt : " />
+
+    <rubenpla.develop.autocompletetextview_sample.AutoCompleteTextViewBasic
         android:id="@+id/autocomplete_original"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autocomplete_textview_ext_title" />
+
+    <TextView
+        android:id="@+id/autocomplete_textview_extended_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="AutoCompleteTextView Custom View :"
+        android:textStyle="bold|italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autocomplete_original"
+        tools:text="AutoCompleteTextViewExt Custom View : " />
 
     <rubenpla.develop.autocompletetextview_sample.AutoCompleteTextViewExtended
         android:id="@+id/autocomplete_textview_extended"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/autocomplete_textview_extended_title" />
 
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
         style="?android:attr/progressBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/autocomplete_textview_extended"
-        app:layout_constraintBottom_toBottomOf="@id/autocomplete_textview_extended"
         android:layout_marginEnd="8dp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/autocomplete_textview_extended"
+        app:layout_constraintStart_toEndOf="@id/autocomplete_textview_extended" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="invisible"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_constraintTop_toBottomOf="@id/autocomplete_textview_extended">
+
+        <TextView
+            android:id="@+id/autocomplete_textview_ext_title_fm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="AutoCompleteTextViewExt FrameLayout :"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="AutoCompleteTextViewExt : " />
+
+        <rubenpla.develop.autocompletetextview_sample.AutoCompleteTextViewExtended
+            android:id="@+id/autocomplete_textview_extended_fm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/autocomplete_textview_ext_title_fm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading_indicator_fm"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/autocomplete_textview_extended_fm"
+            app:layout_constraintStart_toEndOf="@id/autocomplete_textview_extended_fm" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

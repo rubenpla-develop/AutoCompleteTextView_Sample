@@ -6,10 +6,10 @@ import android.os.Handler
 import android.os.Message
 import android.util.AttributeSet
 import android.view.View
-import android.widget.AutoCompleteTextView
 import android.widget.ProgressBar
 
-class AutoCompleteTextViewExtended : AutoCompleteTextView {
+class AutoCompleteTextViewExtended(context: Context, attrs: AttributeSet?)
+    : AutoCompleteTextViewBasic(context, attrs) {
 
     private var autoCompleteDelay = DEFAULT_AUTOCOMPLETE_DELAY
     private var loadingIndicator: ProgressBar? = null
@@ -20,15 +20,6 @@ class AutoCompleteTextViewExtended : AutoCompleteTextView {
             super@AutoCompleteTextViewExtended.performFiltering(msg.obj as CharSequence, msg.arg1)
         }
     }
-
-
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int)
-            : super(context, attrs, defStyleAttr)
-
 
     fun setLoadingIndicator(progressBar: ProgressBar) {
         loadingIndicator = progressBar
@@ -43,7 +34,6 @@ class AutoCompleteTextViewExtended : AutoCompleteTextView {
             loadingIndicator!!.visibility = View.VISIBLE
         }
 
-        autoCompleteHandler
         autoCompleteHandler.removeMessages(MESSAGE_TEXT_CHANGED)
         autoCompleteHandler.sendMessageDelayed(handler.obtainMessage(MESSAGE_TEXT_CHANGED, text),
                 autoCompleteDelay.toLong())
