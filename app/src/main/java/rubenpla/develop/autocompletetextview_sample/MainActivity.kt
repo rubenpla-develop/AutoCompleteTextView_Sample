@@ -16,14 +16,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         setAdapter()
         autocomplete_original.onItemClickListener = this
         autocomplete_textview_extended.onItemClickListener = this
+        autocomplete_textview_extended_fm.onItemClickListener = this
     }
 
     private fun setAdapter() {
         autocomplete_original.setAdapter(AutoCompleteAdapter(this))
         autocomplete_textview_extended.setAdapter(AutoCompleteAdapter(this))
+        autocomplete_textview_extended_fm.setAdapter(AutoCompleteAdapter(this))
         autocomplete_original.threshold = THRESHOLD
         autocomplete_textview_extended.threshold = THRESHOLD
-        autocomplete_textview_extended.setLoadingIndicator(pb_loading_indicator)
+        autocomplete_textview_extended_fm.threshold = THRESHOLD
+        autocomplete_textview_extended_fm.setLoadingIndicator(pb_loading_indicator_fm)
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
